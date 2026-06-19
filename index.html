@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" T. Goldson (Phd candidate) — Mathematics & Business Lecturer | Portfolio | Jamaica">
+<meta name="description" content="T. Goldson (PhD Candidate) — Mathematics & Business Lecturer | Portfolio">
 <meta name="theme-color" content="#020B18">
 
 <!-- Open Graph (link preview when shared) -->
 <meta property="og:title" content="T. Goldson — Mathematics & Business Lecturer">
-<meta property="og:description" content="Academic portfolio of T.Goldson — Mathematics, Business Management, Data Analytics & AI Lecturer based in Jamaica.">
+<meta property="og:description" content="Academic portfolio of T. Goldson — Mathematics, Business Management, Data Analytics & AI Lecturer.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/">
 
 <title>T. Goldson | Mathematics & Business Lecturer</title>
 
 <!-- Favicon inline SVG -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23A8C8F0'/><text x='50%' y='72%' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23020B18'>W</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23A8C8F0'/><text x='50%' y='72%' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23020B18'>G</text></svg>">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,9 @@ a { color: inherit; }
 
 /* ═══════════════════════════════════════════
    COLOUR TOKENS
+   NOTE: body-text tokens brightened from the
+   previous version so copy reads clearly on
+   the dark navy background (WCAG-friendlier).
 ═══════════════════════════════════════════ */
 :root {
   --navy-deep:    #020B18;
@@ -51,14 +54,14 @@ a { color: inherit; }
   --blue-bright:  #4A9FE0;
   --blue-mid:     #1A5A9A;
   --blue-soft:    #A8C8F0;
-  --blue-muted:   #4A8FC0;
-  --blue-dim:     #3A6080;
-  --text-primary: #D4E8F8;
-  --text-sec:     #90BAD8;
-  --text-muted:   #4A7A9A;
-  --text-faint:   #2A4A62;
-  --border-dark:  #0A2A4A;
-  --border-mid:   #1A3A5C;
+  --blue-muted:   #6BA8D6;   /* brightened from #4A8FC0 */
+  --blue-dim:     #7FA8C4;   /* brightened from #3A6080 — main body copy */
+  --text-primary: #F2F7FC;   /* brightened from #D4E8F8 — headline white-blue */
+  --text-sec:     #BBDAF2;   /* brightened from #90BAD8 */
+  --text-muted:   #6E96B4;   /* brightened from #4A7A9A */
+  --text-faint:   #5C84A0;   /* brightened from #2A4A62 — small/meta text */
+  --border-dark:  #103A5C;   /* slightly lifted for visibility */
+  --border-mid:   #224A6E;
 }
 
 /* ═══════════════════════════════════════════
@@ -110,11 +113,12 @@ nav {
   padding: 0 18px; height: 60px;
   display: flex; align-items: center;
   border-left: 1px solid var(--border-mid);
-  transition: color .2s, background .2s;
+  transition: color .2s, background .2s, text-shadow .2s;
 }
 .nav-links a:hover, .nav-links a:focus {
-  color: var(--blue-soft);
-  background: rgba(168,200,240,.04);
+  color: #FFFFFF;
+  background: rgba(168,200,240,.06);
+  text-shadow: 0 0 12px rgba(168,200,240,.65);
   outline: none;
 }
 /* hamburger */
@@ -129,7 +133,7 @@ nav {
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ═══════════════════════════════════════════
-   HERO
+   HERO + ANIMATED BACKGROUND
 ═══════════════════════════════════════════ */
 .hero {
   min-height: 90vh;
@@ -139,26 +143,74 @@ nav {
   overflow: hidden;
   background: linear-gradient(160deg,#020B18 0%,#041830 40%,#061E38 70%,#030E20 100%);
 }
+
+/* Soft drifting glows (slow, professional — not flashy) */
 .glow {
   position: absolute; border-radius: 50%; pointer-events: none;
   background: radial-gradient(circle, #1A6BB0 0%, transparent 68%);
+  will-change: transform;
 }
-.glow-1 { width: 560px; height: 560px; top: -140px; right: -60px; opacity: .07; }
-.glow-2 { width: 320px; height: 320px; bottom: 60px; left: 60px; opacity: .06; }
-.hero-left {
-  padding: 88px 52px;
-  display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid var(--border-mid);
-  position: relative; z-index: 2;
+.glow-1 { width: 560px; height: 560px; top: -140px; right: -60px; opacity: .09; animation: drift1 22s ease-in-out infinite; }
+.glow-2 { width: 320px; height: 320px; bottom: 60px; left: 60px; opacity: .08; animation: drift2 26s ease-in-out infinite; }
+.glow-3 { width: 420px; height: 420px; top: 30%; left: 38%; opacity: .05; animation: drift3 30s ease-in-out infinite; }
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(-40px, 30px) scale(1.08); }
 }
-.hero-right { display: flex; align-items: center; justify-content: center; position: relative; }
+@keyframes drift2 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(30px, -25px) scale(1.05); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(-20px,-30px) scale(1.1); }
+}
+
+/* Animated grid-line sweep behind the monogram */
 .hero-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(0deg,transparent,transparent 39px,#0A2A48 39px,#0A2A48 40px),
     repeating-linear-gradient(90deg,transparent,transparent 39px,#0A2A48 39px,#0A2A48 40px);
   opacity: .45;
+  background-position: 0 0;
+  animation: gridShift 40s linear infinite;
 }
+@keyframes gridShift {
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 -400px, -400px 0; }
+}
+
+/* Slow-rising "data particles" — subtle, professional motion cue
+   for an analytics/AI lecturer's hero panel */
+.particle-field {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1;
+}
+.particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--blue-bright);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rise 14s linear infinite;
+  box-shadow: 0 0 6px 1px rgba(74,159,224,.6);
+}
+@keyframes rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: .55; }
+  85%  { opacity: .35; }
+  100% { transform: translateY(-360px) translateX(var(--drift, 12px)); opacity: 0; }
+}
+
+.hero-left {
+  padding: 88px 52px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--border-mid);
+  position: relative; z-index: 2;
+}
+.hero-right { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+
 .monogram-wrap { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .monogram {
   width: 190px; height: 190px;
@@ -167,6 +219,11 @@ nav {
   font-family: 'Cormorant Garamond', serif;
   font-size: 80px; color: var(--blue-soft); font-weight: 400;
   position: relative;
+  animation: monogramPulse 6s ease-in-out infinite;
+}
+@keyframes monogramPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,159,224,0); }
+  50%      { box-shadow: 0 0 38px 4px rgba(74,159,224,.18); }
 }
 .monogram::before { content:''; position:absolute; inset:-9px; border:1px solid rgba(74,159,224,.22); }
 .monogram::after  { content:''; position:absolute; inset:-18px; border:1px solid rgba(74,159,224,.08); }
@@ -189,9 +246,14 @@ nav {
   font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--blue-muted); border: 1px solid var(--border-mid);
   padding: 7px 14px; margin-bottom: 26px;
+  transition: color .2s, border-color .2s, text-shadow .2s;
+}
+.title-badge:hover {
+  color: #FFFFFF; border-color: var(--blue-bright);
+  text-shadow: 0 0 10px rgba(168,200,240,.5);
 }
 .hero-sub {
-  font-size: 14px; color: var(--blue-dim);
+  font-size: 14.5px; color: var(--blue-dim);
   line-height: 1.9; max-width: 400px; margin-bottom: 40px; font-weight: 300;
 }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -204,17 +266,23 @@ nav {
   font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
   padding: 13px 28px; cursor: pointer; text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
-  transition: background .2s, border-color .2s, color .2s;
+  transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
 }
 .btn-primary {
-  background: var(--blue-mid); color: #C8E4F8;
+  background: var(--blue-mid); color: #FFFFFF;
   border: 1px solid #2A7ACC; font-weight: 500;
 }
-.btn-primary:hover, .btn-primary:focus { background: #1E6BAC; border-color: #3A8ADA; outline: none; }
+.btn-primary:hover, .btn-primary:focus {
+  background: #1E6BAC; border-color: #5AB0E8; outline: none;
+  box-shadow: 0 0 18px rgba(74,159,224,.45);
+}
 .btn-secondary {
   background: transparent; color: var(--blue-muted); border: 1px solid var(--border-mid);
 }
-.btn-secondary:hover, .btn-secondary:focus { border-color: #2A5A8A; color: #7AAECC; outline: none; }
+.btn-secondary:hover, .btn-secondary:focus {
+  border-color: var(--blue-bright); color: #FFFFFF; outline: none;
+  box-shadow: 0 0 14px rgba(74,159,224,.3);
+}
 
 /* ═══════════════════════════════════════════
    TICKER BAND
@@ -225,7 +293,12 @@ nav {
   padding: 13px 48px;
   display: flex; align-items: center; gap: 28px; overflow: hidden;
 }
-.band-item { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; }
+.band-item {
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-faint); white-space: nowrap;
+  transition: color .2s, text-shadow .2s;
+}
+.band-item:hover { color: #FFFFFF; text-shadow: 0 0 10px rgba(168,200,240,.55); }
 .band-dot  { width: 3px; height: 3px; background: var(--blue-mid); border-radius: 50%; flex-shrink: 0; }
 
 /* ═══════════════════════════════════════════
@@ -250,13 +323,15 @@ h2 {
 }
 .exp-item {
   background: var(--navy-panel); padding: 32px 26px; position: relative;
-  transition: background .2s;
+  transition: background .25s, box-shadow .25s;
 }
-.exp-item:hover { background: #041628; }
-.exp-num { font-family:'Cormorant Garamond',serif; font-size:44px; color:#0A2A40; line-height:1; margin-bottom:4px; }
-.exp-icon { position:absolute; top:28px; right:24px; font-size:18px; color:var(--blue-mid); opacity:.7; }
-.exp-title { font-size:14px; font-weight:500; color:var(--text-sec); margin-bottom:8px; }
-.exp-text  { font-size:12px; color:var(--text-faint); line-height:1.85; font-weight:300; }
+.exp-item:hover { background: #082238; box-shadow: inset 0 0 0 1px rgba(74,159,224,.35); }
+.exp-item:hover .exp-title { color: #FFFFFF; text-shadow: 0 0 10px rgba(168,200,240,.5); }
+.exp-item:hover .exp-icon { color: var(--blue-bright); opacity: 1; transform: scale(1.08); }
+.exp-num { font-family:'Cormorant Garamond',serif; font-size:44px; color:#12385A; line-height:1; margin-bottom:4px; }
+.exp-icon { position:absolute; top:28px; right:24px; font-size:18px; color:var(--blue-mid); opacity:.7; transition: color .25s, opacity .25s, transform .25s; }
+.exp-title { font-size:14px; font-weight:500; color:var(--text-sec); margin-bottom:8px; transition: color .25s, text-shadow .25s; }
+.exp-text  { font-size:12.5px; color:var(--blue-dim); line-height:1.85; font-weight:300; }
 
 /* ═══════════════════════════════════════════
    ABOUT
@@ -272,7 +347,7 @@ h2 {
   content: 'EDUCATOR · MATHEMATICIAN · STRATEGIST';
   position: absolute; bottom:0; left:0; right:0;
   font-size:7px; letter-spacing:2.5px; text-transform:uppercase;
-  color:var(--border-mid); text-align:center;
+  color:var(--text-faint); text-align:center;
   padding:10px; border-top:1px solid var(--border-mid); background:var(--navy-mid);
 }
 .profile-frame img { width:100%; height:100%; object-fit:cover; }
@@ -283,18 +358,35 @@ h2 {
   display:flex; align-items:center; justify-content:center;
   font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--text-sec);
 }
-.initials-hint { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--border-mid); }
+.initials-hint { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); }
 
-.cv-list { margin-top:24px; }
-.cv-row { display:flex; align-items:flex-start; gap:18px; padding:14px 0; border-bottom:1px solid var(--border-dark); }
+/* ─── Sub-heading used inside About for the two
+       separated lists: Work Experience / Qualifications ─── */
+.subhead {
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--blue-bright); margin: 28px 0 12px; font-weight: 500;
+  display: flex; align-items: center; gap: 10px;
+}
+.subhead i { font-size: 14px; }
+.subhead:first-of-type { margin-top: 24px; }
+
+.cv-list { margin-top: 4px; }
+.cv-row {
+  display:flex; align-items:flex-start; gap:18px; padding:14px 0;
+  border-bottom:1px solid var(--border-dark);
+  transition: background .2s;
+}
+.cv-row:hover { background: rgba(74,159,224,.04); }
+.cv-row:hover .cv-title { color: #FFFFFF; text-shadow: 0 0 8px rgba(168,200,240,.45); }
 .cv-row:last-child { border-bottom:none; }
 .cv-year { font-size:10.5px; letter-spacing:1px; color:var(--blue-bright); min-width:90px; padding-top:2px; font-weight:500; }
-.cv-title { font-size:13px; color:var(--text-sec); font-weight:500; margin-bottom:2px; }
+.cv-title { font-size:13px; color:var(--text-sec); font-weight:500; margin-bottom:2px; transition: color .2s, text-shadow .2s; }
 .cv-sub   { font-size:11.5px; color:var(--text-faint); font-weight:300; }
 
-.about-body p { font-size:14px; color:var(--blue-dim); line-height:1.95; margin-bottom:16px; font-weight:300; }
+.about-body p { font-size:14.5px; color:var(--blue-dim); line-height:1.95; margin-bottom:16px; font-weight:300; }
 .stats-row { display:flex; border:1px solid var(--border-dark); margin-top:28px; }
-.stat-cell { flex:1; text-align:center; padding:22px 16px; border-right:1px solid var(--border-dark); }
+.stat-cell { flex:1; text-align:center; padding:22px 16px; border-right:1px solid var(--border-dark); transition: background .2s; }
+.stat-cell:hover { background: rgba(74,159,224,.05); }
 .stat-cell:last-child { border-right:none; }
 .stat-num  { font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--blue-bright); line-height:1; }
 .stat-num.hi { color:var(--blue-soft); }
@@ -307,28 +399,41 @@ h2 {
 .teach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .teach-card {
   border:1px solid var(--border-dark); padding:24px 20px;
-  background:var(--navy-deep); transition:border-color .2s;
+  background:var(--navy-deep); transition:border-color .25s, box-shadow .25s, transform .25s;
 }
-.teach-card:hover { border-color:var(--blue-mid); }
+.teach-card:hover {
+  border-color:var(--blue-bright);
+  box-shadow: 0 0 22px rgba(74,159,224,.18);
+  transform: translateY(-2px);
+}
+.teach-card:hover .teach-title { color: #FFFFFF; text-shadow: 0 0 8px rgba(168,200,240,.5); }
+.teach-card:hover .teach-icon { color: #FFFFFF; background: var(--blue-mid); }
 .teach-icon {
   width:34px; height:34px; background:#0A2A4A;
   display:flex; align-items:center; justify-content:center;
   margin-bottom:14px; font-size:15px; color:var(--blue-bright);
+  transition: color .25s, background .25s;
 }
-.teach-title { font-size:12.5px; color:var(--text-sec); font-weight:500; margin-bottom:6px; }
-.teach-text  { font-size:11.5px; color:var(--text-faint); line-height:1.8; font-weight:300; }
+.teach-title { font-size:12.5px; color:var(--text-sec); font-weight:500; margin-bottom:6px; transition: color .25s, text-shadow .25s; }
+.teach-text  { font-size:11.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
 /* ═══════════════════════════════════════════
    PHILOSOPHY
 ═══════════════════════════════════════════ */
 #philosophy { background:var(--navy-deep); }
 .quote-block { border-left:3px solid var(--blue-mid); padding:26px 36px; background:var(--navy-panel); margin-bottom:28px; }
-.quote-text { font-family:'Cormorant Garamond',serif; font-size:clamp(17px,2.5vw,23px); color:#5A9ACA; line-height:1.65; font-style:italic; }
-.phil-body p { font-size:14px; color:var(--blue-dim); line-height:1.95; font-weight:300; max-width:720px; margin-bottom:14px; }
+.quote-text { font-family:'Cormorant Garamond',serif; font-size:clamp(17px,2.5vw,23px); color:#7AB6E0; line-height:1.65; font-style:italic; }
+.phil-body p { font-size:14.5px; color:var(--blue-dim); line-height:1.95; font-weight:300; max-width:720px; margin-bottom:14px; }
 .phil-pillars { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:36px; }
-.pillar { border:1px solid var(--border-dark); border-top:2px solid var(--blue-mid); padding:24px; background:var(--navy-panel); }
-.pillar h4 { font-size:13px; font-weight:500; color:var(--text-sec); margin-bottom:8px; }
-.pillar p  { font-size:12px; color:var(--text-faint); line-height:1.8; font-weight:300; }
+.pillar {
+  border:1px solid var(--border-dark); border-top:2px solid var(--blue-mid);
+  padding:24px; background:var(--navy-panel);
+  transition: box-shadow .25s, transform .25s;
+}
+.pillar:hover { box-shadow: 0 0 20px rgba(74,159,224,.15); transform: translateY(-2px); }
+.pillar:hover h3 { color: #FFFFFF; text-shadow: 0 0 8px rgba(168,200,240,.5); }
+.pillar h3 { font-size:13px; font-weight:500; color:var(--text-sec); margin-bottom:8px; transition: color .25s, text-shadow .25s; }
+.pillar p  { font-size:12.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
 /* ═══════════════════════════════════════════
    ACHIEVEMENTS
@@ -337,12 +442,18 @@ h2 {
 .achieve-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .achieve-card {
   background:var(--navy-deep); border:1px solid var(--border-dark);
-  padding:28px 24px; text-align:center; transition:border-color .2s;
+  padding:28px 24px; text-align:center; transition:border-color .25s, box-shadow .25s, transform .25s;
 }
-.achieve-card:hover { border-color:var(--blue-mid); }
-.achieve-icon { font-size:26px; color:var(--blue-mid); margin-bottom:14px; display:block; }
-.achieve-title { font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-sec); margin-bottom:8px; font-weight:500; }
-.achieve-text  { font-size:12px; color:var(--text-faint); line-height:1.8; font-weight:300; }
+.achieve-card:hover {
+  border-color:var(--blue-bright);
+  box-shadow: 0 0 22px rgba(74,159,224,.18);
+  transform: translateY(-2px);
+}
+.achieve-card:hover .achieve-title { color: #FFFFFF; text-shadow: 0 0 8px rgba(168,200,240,.5); }
+.achieve-card:hover .achieve-icon { color: var(--blue-bright); transform: scale(1.1); }
+.achieve-icon { font-size:26px; color:var(--blue-mid); margin-bottom:14px; display:block; transition: color .25s, transform .25s; }
+.achieve-title { font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-sec); margin-bottom:8px; font-weight:500; transition: color .25s, text-shadow .25s; }
+.achieve-text  { font-size:12.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
 /* ═══════════════════════════════════════════
    CONTACT
@@ -350,11 +461,16 @@ h2 {
 #contact { background:var(--navy-panel); border-top:1px solid var(--border-dark); text-align:center; padding:80px 48px; }
 .contact-card { background:var(--navy-deep); border:1px solid var(--border-dark); padding:52px 48px; max-width:640px; margin:0 auto; }
 .contact-rule  { width:32px; height:1px; background:var(--blue-mid); margin:0 auto 28px; }
-.contact-card h3 { font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--text-sec); font-weight:600; margin-bottom:8px; }
-.contact-card > p { font-size:13px; color:var(--text-faint); margin-bottom:36px; font-weight:300; line-height:1.8; }
+.contact-card h2 { font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--text-sec); font-weight:600; margin-bottom:8px; }
+.contact-card > p { font-size:13.5px; color:var(--blue-dim); margin-bottom:36px; font-weight:300; line-height:1.8; }
 .contact-items { display:flex; flex-direction:column; gap:14px; align-items:center; margin-bottom:36px; }
-.citem { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--blue-dim); }
-.citem i { font-size:16px; color:var(--blue-mid); }
+.citem {
+  display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--blue-dim);
+  transition: color .2s, text-shadow .2s;
+}
+.citem:hover { color: #FFFFFF; text-shadow: 0 0 10px rgba(168,200,240,.5); }
+.citem i { font-size:16px; color:var(--blue-mid); transition: color .2s; }
+.citem:hover i { color: var(--blue-bright); }
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -364,8 +480,8 @@ footer {
   padding:22px 48px; display:flex; justify-content:space-between;
   align-items:center; flex-wrap:wrap; gap:12px;
 }
-.f-logo { font-family:'Cormorant Garamond',serif; font-size:14px; color:#1A3A5A; letter-spacing:2px; text-transform:uppercase; }
-footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#0E2A40; }
+.f-logo { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--text-faint); letter-spacing:2px; text-transform:uppercase; }
+footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); }
 
 /* ═══════════════════════════════════════════
    BACK TO TOP
@@ -375,13 +491,13 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   width: 42px; height: 42px;
   background: var(--blue-mid); border: 1px solid #2A7ACC;
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: #C8E4F8; cursor: pointer;
+  font-size: 18px; color: #FFFFFF; cursor: pointer;
   opacity: 0; pointer-events: none;
-  transition: opacity .3s;
+  transition: opacity .3s, box-shadow .3s;
   text-decoration: none; z-index: 99;
 }
 .back-top.show { opacity: 1; pointer-events: all; }
-.back-top:hover { background: #1E6BAC; }
+.back-top:hover { background: #1E6BAC; box-shadow: 0 0 18px rgba(74,159,224,.5); }
 
 /* ═══════════════════════════════════════════
    SCROLL REVEAL
@@ -438,7 +554,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
    PRINT
 ═══════════════════════════════════════════ */
 @media print {
-  nav, .band, .back-top { display: none; }
+  nav, .band, .back-top, .particle-field, .glow, .hero-grid { display: none; }
   body { background: #fff; color: #000; }
   h1, h2, h3 { color: #000; }
   .reveal { opacity: 1; transform: none; }
@@ -451,6 +567,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity:1; transform:none; transition:none; }
   html { scroll-behavior: auto; }
+  .glow, .hero-grid, .monogram, .particle { animation: none !important; }
 }
 </style>
 </head>
@@ -460,9 +577,9 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
 <!-- ══════════════ NAVIGATION ══════════════ -->
 <nav role="navigation" aria-label="Main navigation">
-  <a href="#home" class="nav-logo" aria-label="Dr. A. Williams — Home">
-    <div class="nav-mark" aria-hidden="true">W</div>
-    <div class="nav-name">T Goldson</div>
+  <a href="#home" class="nav-logo" aria-label="T. Goldson — Home">
+    <div class="nav-mark" aria-hidden="true">G</div>
+    <div class="nav-name">T. Goldson</div>
   </a>
   <div class="nav-links" id="navLinks" role="menubar">
     <a href="#about"        role="menuitem">About</a>
@@ -483,14 +600,15 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 <section class="hero" id="home" aria-label="Introduction">
   <div class="glow glow-1" aria-hidden="true"></div>
   <div class="glow glow-2" aria-hidden="true"></div>
+  <div class="glow glow-3" aria-hidden="true"></div>
 
   <div class="hero-left">
-    <div class="eyebrow">Academic Portfolio — Jamaica, W.I.</div>
+    <div class="eyebrow">Academic Portfolio</div>
     <div class="hero-rule"></div>
-    <h1>T. <br>Goldson</h1>
+    <h1>T.<br>Goldson</h1>
     <div class="title-badge">Mathematics &amp; Business Lecturer</div>
     <p class="hero-sub">
-      Over a decade of shaping analytical minds across Jamaica, Canada and the wider world bridging the precision of mathematics with the strategy of business and the intelligence of data &amp; AI.
+      Over a decade of shaping analytical minds across Jamaica, Canada, and beyond — bridging the precision of mathematics with the strategy of business and the intelligence of data &amp; AI.
     </p>
     <div class="hero-btns">
       <a href="#about"   class="btn-primary"><i class="ti ti-user" aria-hidden="true"></i> About Me</a>
@@ -500,6 +618,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
   <div class="hero-right" aria-hidden="true">
     <div class="hero-grid"></div>
+    <div class="particle-field" id="particleField"></div>
     <div class="monogram-wrap">
       <div class="monogram">G</div>
       <div class="mono-label">Mathematics · Business · Data &amp; AI</div>
@@ -512,7 +631,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   <span class="band-item">Pure Mathematics</span><span class="band-dot"></span>
   <span class="band-item">Applied Mathematics &amp; Statistics</span><span class="band-dot"></span>
   <span class="band-item">Business Management</span><span class="band-dot"></span>
-  <span class="band-item">Operation Management</span><span class="band-dot"></span>
+  <span class="band-item">Operations Management</span><span class="band-dot"></span>
   <span class="band-item">Data Analytics</span><span class="band-dot"></span>
   <span class="band-item">Artificial Intelligence</span><span class="band-dot"></span>
   <span class="band-item">CSEC · CAPE · Tertiary · Corporate</span>
@@ -541,13 +660,13 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
       <div class="exp-num" aria-hidden="true">03</div>
       <i class="ti ti-briefcase exp-icon" aria-hidden="true"></i>
       <h3 class="exp-title">Business Management</h3>
-      <p class="exp-text">Strategic management, organisational behaviour, entrepreneurship, and marketing — grounded in Caribbean and international case studies that make theory immediately applicable.</p>
+      <p class="exp-text">Strategic management, organisational behaviour, entrepreneurship, and marketing — grounded in real-world case studies that make theory immediately applicable.</p>
     </article>
     <article class="exp-item reveal">
       <div class="exp-num" aria-hidden="true">04</div>
       <i class="ti ti-coin exp-icon" aria-hidden="true"></i>
-      <h3 class="exp-title">Operational Management &amp; Accounting</h3>
-      <p class="exp-text">Inventory management, quality control, lean manufacturing, and process optimization — building both technical proficiency and the strategic perspective needed to lead operational decisions.</p>
+      <h3 class="exp-title">Operations Management &amp; Accounting</h3>
+      <p class="exp-text">Inventory management, quality control, lean process design, and operational accounting — building both technical proficiency and the strategic perspective needed to lead operational decisions.</p>
     </article>
     <article class="exp-item reveal">
       <div class="exp-num" aria-hidden="true">05</div>
@@ -571,7 +690,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   <div class="h2-rule reveal"></div>
 
   <div class="about-cols">
-    <!-- Photo + CV -->
+    <!-- Photo + CV (Work Experience separated from Qualifications) -->
     <div class="reveal">
       <div class="profile-frame">
         <!--
@@ -587,44 +706,51 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
         </div>
       </div>
 
-      <div class="cv-list" role="list" aria-label="Career timeline">
+      <!-- WORK EXPERIENCE -->
+      <p class="subhead"><i class="ti ti-briefcase" aria-hidden="true"></i> Work Experience</p>
+      <div class="cv-list" role="list" aria-label="Work experience timeline">
         <div class="cv-row" role="listitem">
           <div class="cv-year">2022 – Now</div>
-          <div><p class="cv-title"> Business Instructor</p><p class="cv-sub">Tertiary Institution, Canada</p></div>
+          <div><p class="cv-title">Business Instructor</p><p class="cv-sub">Tertiary Institution, Canada</p></div>
         </div>
         <div class="cv-row" role="listitem">
-          <div class="cv-year">2022 – 2025</div>
+          <div class="cv-year">2018 – 2022</div>
           <div><p class="cv-title">Lecturer</p><p class="cv-sub">Mathematics &amp; Business Studies</p></div>
         </div>
         <div class="cv-row" role="listitem">
           <div class="cv-year">2010 – 2018</div>
           <div><p class="cv-title">Secondary School Teacher</p><p class="cv-sub">CAPE &amp; CSEC Mathematics Specialist</p></div>
         </div>
-         <div class="cv-row" role="listitem">
-          <div class="cv-year">2026-current</div>
-          <div><p class="cv-title">PhD Candidate </p><p class="cv-sub">Saint Peter's University</p></div>
+      </div>
+
+      <!-- QUALIFICATIONS -->
+      <p class="subhead"><i class="ti ti-certificate" aria-hidden="true"></i> Qualifications</p>
+      <div class="cv-list" role="list" aria-label="Academic qualifications timeline">
+        <div class="cv-row" role="listitem">
+          <div class="cv-year">2026 – Current</div>
+          <div><p class="cv-title">PhD Candidate</p><p class="cv-sub">Saint Peter's University</p></div>
         </div>
-         <div class="cv-row" role="listitem">
+        <div class="cv-row" role="listitem">
           <div class="cv-year">2022</div>
-          <div><p class="cv-title">MBA </p><p class="cv-sub">University Canada West</p></div>
+          <div><p class="cv-title">MBA, Data Analytics</p><p class="cv-sub">University Canada West</p></div>
         </div>
-         <div class="cv-row" role="listitem">
+        <div class="cv-row" role="listitem">
           <div class="cv-year">2019</div>
-          <div><p class="cv-title">MSc Foresenic Chemistry </p><p class="cv-sub">University of the West Indies</p></div>
+          <div><p class="cv-title">MSc Forensic Chemistry</p><p class="cv-sub">University of the West Indies</p></div>
         </div>
         <div class="cv-row" role="listitem">
           <div class="cv-year">2009</div>
-          <div><p class="cv-title">BSc Mathematics and Chemistry </p><p class="cv-sub">University of Technology(Jamaica)</p></div>
+          <div><p class="cv-title">BSc Mathematics &amp; Chemistry</p><p class="cv-sub">University of Technology, Jamaica</p></div>
         </div>
       </div>
     </div>
 
     <!-- Bio -->
     <div class="about-body reveal">
-      <p>I am a dedicated educator with over a decade of experience at secondary and tertiary levels across Jamaica, japan and Canada. My academic journey began at the University of Tecnology, where I graduated with Bachelors of Science Eduaction majoring in mathematics and chemistry, followed by an masters in Forensic Science and later a MBA, a combination that gives me a uniquely integrated perspective on both quantitative and business disciplines.</p>
-      <p>My classroom is a space where rigour meets relevance. I challenge students not merely to solve problems, but to understand the deeper frameworks behind every solution producing graduates who think critically, adapt readily, and lead confidently in their professional fields.</p>
-      <p>In recent years I have expanded my teaching into Data Analytics and Artificial Intelligence disciplines rapidly reshaping every sector of the World's economy. My goal is to ensure that every student I teach leaves not just exam ready, but future ready.</p>
-      <p>Beyond the lecture hall, I lead Artificial Intelligence literacy workshops for community organisations, mentor first-generation university students, and collaborate with regional curriculum bodies to strengthen Mathematics and Business education standards on global scale.</p>
+      <p>I am a dedicated educator with over a decade of experience at secondary and tertiary levels across Jamaica, Canada, and beyond. My academic journey began at the University of Technology, Jamaica, where I earned a BSc in Mathematics and Chemistry, followed by an MSc in Forensic Chemistry from the University of the West Indies and an MBA in Data Analytics from University Canada West — a combination that gives me a uniquely integrated perspective across the sciences, quantitative reasoning, and business strategy.</p>
+      <p>My classroom is a space where rigour meets relevance. I challenge students not merely to solve problems, but to understand the deeper frameworks behind every solution — producing graduates who think critically, adapt readily, and lead confidently in their professional fields.</p>
+      <p>In recent years I have expanded my teaching into Data Analytics and Artificial Intelligence — disciplines rapidly reshaping every sector of the global economy. My goal is to ensure that every student I teach leaves not just exam-ready, but future-ready.</p>
+      <p>Beyond the lecture hall, I lead Artificial Intelligence literacy workshops for community organisations, mentor first-generation university students, and collaborate with curriculum bodies to strengthen Mathematics and Business education standards on a global scale.</p>
 
       <div class="stats-row" role="list" aria-label="Key statistics">
         <div class="stat-cell" role="listitem">
@@ -667,8 +793,8 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
     </article>
     <article class="teach-card reveal">
       <div class="teach-icon" aria-hidden="true"><i class="ti ti-world"></i></div>
-      <h3 class="teach-title">Caribbean Context</h3>
-      <p class="teach-text">Abstract theory is anchored to authentic local and regional scenarios, Jamaican economic data, Caribbean business cases, and real industry examples students will recognise.</p>
+      <h3 class="teach-title">Global Context</h3>
+      <p class="teach-text">Abstract theory is anchored to authentic local and international scenarios — real economic data, business cases, and industry examples students will recognise.</p>
     </article>
     <article class="teach-card reveal">
       <div class="teach-icon" aria-hidden="true"><i class="ti ti-chart-line"></i></div>
@@ -720,11 +846,11 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
     </div>
     <div class="pillar reveal">
       <h3>Dual Fluency: Quantitative &amp; Strategic</h3>
-      <p>Teaching both Mathematics and Business gives my students a rare advantage they can model a problem numerically and frame it strategically, a combination consistently valued by employers.</p>
+      <p>Teaching both Mathematics and Business gives my students a rare advantage — they can model a problem numerically and frame it strategically, a combination consistently valued by employers.</p>
     </div>
     <div class="pillar reveal">
       <h3>Preparing for a Changing Economy</h3>
-      <p>Financial intelligence, data literacy, and AI awareness are no longer optional they are the foundation of economic participation in the decades ahead for every Caribbean professional.</p>
+      <p>Financial intelligence, data literacy, and AI awareness are no longer optional — they are the foundation of economic participation in the decades ahead for every professional.</p>
     </div>
     <div class="pillar reveal">
       <h3>Education as Community Investment</h3>
@@ -742,23 +868,23 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   <div class="achieve-grid">
     <article class="achieve-card reveal">
       <i class="ti ti-school achieve-icon" aria-hidden="true"></i>
-      <h3 class="achieve-title">MBA </h3>
-      <p class="achieve-text">Master of Business Administration , University Canada West. Data Analytics — combining advanced business strategy with rigorous statistics theory.</p>
+      <h3 class="achieve-title">MBA, Data Analytics</h3>
+      <p class="achieve-text">Master of Business Administration, University Canada West — combining advanced business strategy with rigorous data and statistics theory.</p>
+    </article>
+    <article class="achieve-card reveal">
+      <i class="ti ti-flask achieve-icon" aria-hidden="true"></i>
+      <h3 class="achieve-title">MSc Forensic Chemistry</h3>
+      <p class="achieve-text">Master of Science in Forensic Chemistry, University of the West Indies — a rigorous scientific foundation that reinforces an evidence-based, analytical approach to teaching.</p>
     </article>
     <article class="achieve-card reveal">
       <i class="ti ti-math achieve-icon" aria-hidden="true"></i>
-      <h3 class="achieve-title">BSc Science Education (Mathematics & Chemistry) </h3>
-      <p class="achieve-text">Bachelor of Science in Science Education, University of Technology Jamaica — the academic foundation of a teaching career built on precision and depth.</p>
+      <h3 class="achieve-title">BSc Mathematics &amp; Chemistry</h3>
+      <p class="achieve-text">Bachelor of Science, University of Technology, Jamaica — the academic foundation of a teaching career built on precision and depth.</p>
     </article>
     <article class="achieve-card reveal">
       <i class="ti ti-certificate achieve-icon" aria-hidden="true"></i>
-      <h3 class="achieve-title"> Leadership Certificate</h3>
-      <p class="achieve-text">certification in Supervisory Management — equipping a career in teaching with administrative, mentoring, and curriculum design skills of an academic leader.</p>
-    </article>
-    <article class="achieve-card reveal">
-      <i class="ti ti-trophy achieve-icon" aria-hidden="true"></i>
-      <h3 class="achieve-title">Excellence in Teaching Award</h3>
-      <p class="achieve-text">Recognised for outstanding student outcomes, curriculum innovation, and sustained commitment to academic excellence across multiple cohorts and subject areas.</p>
+      <h3 class="achieve-title">PhD Candidate</h3>
+      <p class="achieve-text">Currently pursuing doctoral studies at Saint Peter's University — extending research expertise and academic leadership at the highest level.</p>
     </article>
     <article class="achieve-card reveal">
       <i class="ti ti-cpu achieve-icon" aria-hidden="true"></i>
@@ -768,7 +894,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
     <article class="achieve-card reveal">
       <i class="ti ti-heart achieve-icon" aria-hidden="true"></i>
       <h3 class="achieve-title">Community AI Literacy</h3>
-      <p class="achieve-text">Founded and leads an Artificial Intelliegnce literacy programme serving community members annually — extending the classroom into the wider Jamaican community.</p>
+      <p class="achieve-text">Leads Artificial Intelligence literacy workshops for community organisations — extending classroom expertise into broader public education and outreach.</p>
     </article>
   </div>
 </section>
@@ -778,11 +904,11 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   <div class="contact-card reveal">
     <div class="contact-rule" aria-hidden="true"></div>
     <h2 id="h-contact">Let's Connect</h2>
-    <p>Open for tutoring inquiries, academic collaboration, speaking engagements, curriculum consulting, and corporate AI literacy workshops across Jamaica and the Caribbean.</p>
+    <p>Open for tutoring inquiries, academic collaboration, speaking engagements, curriculum consulting, and corporate AI literacy workshops.</p>
     <address class="contact-items">
       <a class="citem" href="mailto:youremail@example.com"><i class="ti ti-mail" aria-hidden="true"></i> youremail@example.com</a>
       <a class="citem" href="tel:+18760000000"><i class="ti ti-phone" aria-hidden="true"></i> +1 (876) 000-0000</a>
-      <span class="citem"><i class="ti ti-map-pin" aria-hidden="true"></i> Kingston, Jamaica, West Indies</span>
+      <span class="citem"><i class="ti ti-map-pin" aria-hidden="true"></i> Kingston, Jamaica</span>
       <a class="citem" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> linkedin.com/in/yourprofile</a>
     </address>
     <a href="mailto:youremail@example.com" class="btn-primary" style="margin:0 auto">
@@ -796,7 +922,7 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="f-logo">T. Goldson</div>
-  <p>Mathematics · Business · Data &amp; AI · Jamaica, W.I.</p>
+  <p>Mathematics · Business · Data &amp; AI</p>
   <p>© 2026 — All rights reserved</p>
 </footer>
 
@@ -855,12 +981,34 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
       if (e.isIntersecting) {
         navAs.forEach(a => {
           a.style.color = a.getAttribute('href') === '#' + e.target.id
-            ? 'var(--blue-soft)' : '';
+            ? '#FFFFFF' : '';
         });
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => navObs.observe(s));
+
+  /* ── Generate floating data-particles in hero (subtle motion) ── */
+  (function () {
+    const field = document.getElementById('particleField');
+    if (!field || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const COUNT = 22;
+    for (let i = 0; i < COUNT; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const left = Math.random() * 100;
+      const bottom = Math.random() * 30;
+      const delay = Math.random() * 14;
+      const duration = 10 + Math.random() * 10;
+      const driftX = (Math.random() * 40 - 20) + 'px';
+      p.style.left = left + '%';
+      p.style.bottom = bottom + '%';
+      p.style.animationDelay = delay + 's';
+      p.style.animationDuration = duration + 's';
+      p.style.setProperty('--drift', driftX);
+      field.appendChild(p);
+    }
+  })();
 </script>
 
 </body>
