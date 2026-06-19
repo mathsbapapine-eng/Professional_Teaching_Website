@@ -1,3 +1,6 @@
+Got it — you want the raw HTML code shown directly in the chat reply (as text), not just as a downloadable file. Here it is in full:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +29,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 
 <style>
-/* ═══════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -41,12 +41,6 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-/* ═══════════════════════════════════════════
-   COLOUR TOKENS
-   NOTE: body-text tokens brightened from the
-   previous version so copy reads clearly on
-   the dark navy background (WCAG-friendlier).
-═══════════════════════════════════════════ */
 :root {
   --navy-deep:    #020B18;
   --navy-mid:     #041830;
@@ -54,19 +48,16 @@ a { color: inherit; }
   --blue-bright:  #4A9FE0;
   --blue-mid:     #1A5A9A;
   --blue-soft:    #A8C8F0;
-  --blue-muted:   #6BA8D6;   /* brightened from #4A8FC0 */
-  --blue-dim:     #7FA8C4;   /* brightened from #3A6080 — main body copy */
-  --text-primary: #F2F7FC;   /* brightened from #D4E8F8 — headline white-blue */
-  --text-sec:     #BBDAF2;   /* brightened from #90BAD8 */
-  --text-muted:   #6E96B4;   /* brightened from #4A7A9A */
-  --text-faint:   #5C84A0;   /* brightened from #2A4A62 — small/meta text */
-  --border-dark:  #103A5C;   /* slightly lifted for visibility */
+  --blue-muted:   #6BA8D6;
+  --blue-dim:     #7FA8C4;
+  --text-primary: #F2F7FC;
+  --text-sec:     #BBDAF2;
+  --text-muted:   #6E96B4;
+  --text-faint:   #5C84A0;
+  --border-dark:  #103A5C;
   --border-mid:   #224A6E;
 }
 
-/* ═══════════════════════════════════════════
-   SKIP LINK (accessibility)
-═══════════════════════════════════════════ */
 .skip-link {
   position: absolute; top: -999px; left: 0;
   background: var(--blue-soft); color: var(--navy-deep);
@@ -75,9 +66,6 @@ a { color: inherit; }
 }
 .skip-link:focus { top: 0; }
 
-/* ═══════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════ */
 nav {
   background: rgba(2,11,24,0.97);
   border-bottom: 1px solid var(--border-mid);
@@ -121,7 +109,6 @@ nav {
   text-shadow: 0 0 12px rgba(168,200,240,.65);
   outline: none;
 }
-/* hamburger */
 .nav-toggle {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; padding: 4px; align-self: center;
@@ -132,9 +119,6 @@ nav {
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ═══════════════════════════════════════════
-   HERO + ANIMATED BACKGROUND
-═══════════════════════════════════════════ */
 .hero {
   min-height: 90vh;
   display: grid;
@@ -144,7 +128,6 @@ nav {
   background: linear-gradient(160deg,#020B18 0%,#041830 40%,#061E38 70%,#030E20 100%);
 }
 
-/* Soft drifting glows (slow, professional — not flashy) */
 .glow {
   position: absolute; border-radius: 50%; pointer-events: none;
   background: radial-gradient(circle, #1A6BB0 0%, transparent 68%);
@@ -167,7 +150,6 @@ nav {
   50%      { transform: translate(-20px,-30px) scale(1.1); }
 }
 
-/* Animated grid-line sweep behind the monogram */
 .hero-grid {
   position: absolute; inset: 0;
   background:
@@ -182,8 +164,6 @@ nav {
   100% { background-position: 0 -400px, -400px 0; }
 }
 
-/* Slow-rising "data particles" — subtle, professional motion cue
-   for an analytics/AI lecturer's hero panel */
 .particle-field {
   position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1;
 }
@@ -258,9 +238,6 @@ nav {
 }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* ═══════════════════════════════════════════
-   BUTTONS
-═══════════════════════════════════════════ */
 .btn-primary, .btn-secondary {
   font-family: 'DM Sans', sans-serif;
   font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
@@ -284,9 +261,6 @@ nav {
   box-shadow: 0 0 14px rgba(74,159,224,.3);
 }
 
-/* ═══════════════════════════════════════════
-   TICKER BAND
-═══════════════════════════════════════════ */
 .band {
   background: var(--navy-mid);
   border-top: 1px solid var(--border-mid); border-bottom: 1px solid var(--border-mid);
@@ -301,9 +275,6 @@ nav {
 .band-item:hover { color: #FFFFFF; text-shadow: 0 0 10px rgba(168,200,240,.55); }
 .band-dot  { width: 3px; height: 3px; background: var(--blue-mid); border-radius: 50%; flex-shrink: 0; }
 
-/* ═══════════════════════════════════════════
-   SECTION COMMONS
-═══════════════════════════════════════════ */
 section { padding: 80px 48px; }
 .s-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-muted); margin-bottom: 6px; }
 h2 {
@@ -313,9 +284,6 @@ h2 {
 }
 .h2-rule { width: 40px; height: 1px; background: var(--blue-mid); margin-bottom: 44px; }
 
-/* ═══════════════════════════════════════════
-   EXPERTISE GRID
-═══════════════════════════════════════════ */
 #expertise { background: var(--navy-panel); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); }
 .expertise-grid {
   display: grid; grid-template-columns: repeat(3,1fr);
@@ -333,9 +301,6 @@ h2 {
 .exp-title { font-size:14px; font-weight:500; color:var(--text-sec); margin-bottom:8px; transition: color .25s, text-shadow .25s; }
 .exp-text  { font-size:12.5px; color:var(--blue-dim); line-height:1.85; font-weight:300; }
 
-/* ═══════════════════════════════════════════
-   ABOUT
-═══════════════════════════════════════════ */
 #about { background: var(--navy-deep); }
 .about-cols { display: grid; grid-template-columns: 300px 1fr; gap: 52px; align-items: start; }
 .profile-frame {
@@ -360,8 +325,6 @@ h2 {
 }
 .initials-hint { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); }
 
-/* ─── Sub-heading used inside About for the two
-       separated lists: Work Experience / Qualifications ─── */
 .subhead {
   font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--blue-bright); margin: 28px 0 12px; font-weight: 500;
@@ -392,9 +355,6 @@ h2 {
 .stat-num.hi { color:var(--blue-soft); }
 .stat-lbl  { font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); margin-top:4px; }
 
-/* ═══════════════════════════════════════════
-   HOW I TEACH
-═══════════════════════════════════════════ */
 #teach { background: var(--navy-panel); border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); }
 .teach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .teach-card {
@@ -417,9 +377,6 @@ h2 {
 .teach-title { font-size:12.5px; color:var(--text-sec); font-weight:500; margin-bottom:6px; transition: color .25s, text-shadow .25s; }
 .teach-text  { font-size:11.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
-/* ═══════════════════════════════════════════
-   PHILOSOPHY
-═══════════════════════════════════════════ */
 #philosophy { background:var(--navy-deep); }
 .quote-block { border-left:3px solid var(--blue-mid); padding:26px 36px; background:var(--navy-panel); margin-bottom:28px; }
 .quote-text { font-family:'Cormorant Garamond',serif; font-size:clamp(17px,2.5vw,23px); color:#7AB6E0; line-height:1.65; font-style:italic; }
@@ -435,9 +392,6 @@ h2 {
 .pillar h3 { font-size:13px; font-weight:500; color:var(--text-sec); margin-bottom:8px; transition: color .25s, text-shadow .25s; }
 .pillar p  { font-size:12.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
-/* ═══════════════════════════════════════════
-   ACHIEVEMENTS
-═══════════════════════════════════════════ */
 #achievements { background:var(--navy-panel); border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); }
 .achieve-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .achieve-card {
@@ -455,9 +409,6 @@ h2 {
 .achieve-title { font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-sec); margin-bottom:8px; font-weight:500; transition: color .25s, text-shadow .25s; }
 .achieve-text  { font-size:12.5px; color:var(--blue-dim); line-height:1.8; font-weight:300; }
 
-/* ═══════════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════════ */
 #contact { background:var(--navy-panel); border-top:1px solid var(--border-dark); text-align:center; padding:80px 48px; }
 .contact-card { background:var(--navy-deep); border:1px solid var(--border-dark); padding:52px 48px; max-width:640px; margin:0 auto; }
 .contact-rule  { width:32px; height:1px; background:var(--blue-mid); margin:0 auto 28px; }
@@ -472,9 +423,6 @@ h2 {
 .citem i { font-size:16px; color:var(--blue-mid); transition: color .2s; }
 .citem:hover i { color: var(--blue-bright); }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
 footer {
   background:#010710; border-top:1px solid #0A1E30;
   padding:22px 48px; display:flex; justify-content:space-between;
@@ -483,9 +431,6 @@ footer {
 .f-logo { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--text-faint); letter-spacing:2px; text-transform:uppercase; }
 footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); }
 
-/* ═══════════════════════════════════════════
-   BACK TO TOP
-═══════════════════════════════════════════ */
 .back-top {
   position: fixed; bottom: 28px; right: 28px;
   width: 42px; height: 42px;
@@ -499,15 +444,9 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 .back-top.show { opacity: 1; pointer-events: all; }
 .back-top:hover { background: #1E6BAC; box-shadow: 0 0 18px rgba(74,159,224,.5); }
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════ */
 .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }
 .reveal.visible { opacity:1; transform:none; }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE — TABLET
-═══════════════════════════════════════════ */
 @media (max-width: 960px) {
   nav { padding: 0 24px; }
   .nav-links {
@@ -535,9 +474,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   footer { flex-direction: column; text-align: center; }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE — MOBILE
-═══════════════════════════════════════════ */
 @media (max-width: 560px) {
   .expertise-grid,
   .teach-grid,
@@ -550,9 +486,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   .band { flex-wrap: wrap; gap: 10px; }
 }
 
-/* ═══════════════════════════════════════════
-   PRINT
-═══════════════════════════════════════════ */
 @media print {
   nav, .band, .back-top, .particle-field, .glow, .hero-grid { display: none; }
   body { background: #fff; color: #000; }
@@ -561,9 +494,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   section { padding: 32px 0; break-inside: avoid; }
 }
 
-/* ═══════════════════════════════════════════
-   REDUCED MOTION
-═══════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity:1; transform:none; transition:none; }
   html { scroll-behavior: auto; }
@@ -575,7 +505,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ══════════════ NAVIGATION ══════════════ -->
 <nav role="navigation" aria-label="Main navigation">
   <a href="#home" class="nav-logo" aria-label="T. Goldson — Home">
     <div class="nav-mark" aria-hidden="true">G</div>
@@ -596,7 +525,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
 <main id="main">
 
-<!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="home" aria-label="Introduction">
   <div class="glow glow-1" aria-hidden="true"></div>
   <div class="glow glow-2" aria-hidden="true"></div>
@@ -626,7 +554,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- TICKER BAND -->
 <div class="band" aria-hidden="true">
   <span class="band-item">Pure Mathematics</span><span class="band-dot"></span>
   <span class="band-item">Applied Mathematics &amp; Statistics</span><span class="band-dot"></span>
@@ -637,7 +564,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   <span class="band-item">CSEC · CAPE · Tertiary · Corporate</span>
 </div>
 
-<!-- ══════════════ EXPERTISE ══════════════ -->
 <section id="expertise" aria-labelledby="h-expertise">
   <p class="s-eyebrow reveal">Teaching Disciplines</p>
   <h2 id="h-expertise" class="reveal">Core Expertise</h2>
@@ -683,22 +609,14 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- ══════════════ ABOUT ══════════════ -->
 <section id="about" aria-labelledby="h-about">
   <p class="s-eyebrow reveal">Background &amp; Experience</p>
   <h2 id="h-about" class="reveal">About Me</h2>
   <div class="h2-rule reveal"></div>
 
   <div class="about-cols">
-    <!-- Photo + CV (Work Experience separated from Qualifications) -->
     <div class="reveal">
       <div class="profile-frame">
-        <!--
-          TO ADD YOUR PHOTO:
-          1. Save your image as "profile.jpg" in the same folder as this file
-          2. Remove the div.profile-placeholder below
-          3. Uncomment the <img> tag
-        -->
         <!-- <img src="profile.jpg" alt="T. Goldson"> -->
         <div class="profile-placeholder">
           <div class="initials-circle">TG</div>
@@ -706,7 +624,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
         </div>
       </div>
 
-      <!-- WORK EXPERIENCE -->
       <p class="subhead"><i class="ti ti-briefcase" aria-hidden="true"></i> Work Experience</p>
       <div class="cv-list" role="list" aria-label="Work experience timeline">
         <div class="cv-row" role="listitem">
@@ -723,7 +640,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
         </div>
       </div>
 
-      <!-- QUALIFICATIONS -->
       <p class="subhead"><i class="ti ti-certificate" aria-hidden="true"></i> Qualifications</p>
       <div class="cv-list" role="list" aria-label="Academic qualifications timeline">
         <div class="cv-row" role="listitem">
@@ -745,7 +661,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
       </div>
     </div>
 
-    <!-- Bio -->
     <div class="about-body reveal">
       <p>I am a dedicated educator with over a decade of experience at secondary and tertiary levels across Jamaica, Canada, and beyond. My academic journey began at the University of Technology, Jamaica, where I earned a BSc in Mathematics and Chemistry, followed by an MSc in Forensic Chemistry from the University of the West Indies and an MBA in Data Analytics from University Canada West — a combination that gives me a uniquely integrated perspective across the sciences, quantitative reasoning, and business strategy.</p>
       <p>My classroom is a space where rigour meets relevance. I challenge students not merely to solve problems, but to understand the deeper frameworks behind every solution — producing graduates who think critically, adapt readily, and lead confidently in their professional fields.</p>
@@ -774,7 +689,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- ══════════════ HOW I TEACH ══════════════ -->
 <section id="teach" aria-labelledby="h-teach">
   <p class="s-eyebrow reveal">Pedagogy</p>
   <h2 id="h-teach" class="reveal">How I Teach</h2>
@@ -824,7 +738,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- ══════════════ PHILOSOPHY ══════════════ -->
 <section id="philosophy" aria-labelledby="h-phil">
   <p class="s-eyebrow reveal">My Approach to Education</p>
   <h2 id="h-phil" class="reveal">Teaching Philosophy</h2>
@@ -859,7 +772,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- ══════════════ ACHIEVEMENTS ══════════════ -->
 <section id="achievements" aria-labelledby="h-achieve">
   <p class="s-eyebrow reveal">Qualifications &amp; Recognition</p>
   <h2 id="h-achieve" class="reveal">Achievements &amp; Credentials</h2>
@@ -899,7 +811,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   </div>
 </section>
 
-<!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact" aria-labelledby="h-contact">
   <div class="contact-card reveal">
     <div class="contact-rule" aria-hidden="true"></div>
@@ -919,21 +830,17 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
 </main>
 
-<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="f-logo">T. Goldson</div>
   <p>Mathematics · Business · Data &amp; AI</p>
   <p>© 2026 — All rights reserved</p>
 </footer>
 
-<!-- Back to top -->
 <a href="#home" class="back-top" id="backTop" aria-label="Back to top">
   <i class="ti ti-arrow-up" aria-hidden="true"></i>
 </a>
 
-<!-- ══════════════ SCRIPTS ══════════════ -->
 <script>
-  /* ── Mobile nav toggle ── */
   const toggle   = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {
@@ -947,7 +854,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
     })
   );
 
-  /* ── Scroll reveal ── */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -958,7 +864,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* ── Stagger grid children ── */
   document.querySelectorAll(
     '.expertise-grid, .teach-grid, .achieve-grid, .phil-pillars'
   ).forEach(grid => {
@@ -967,13 +872,11 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
     });
   });
 
-  /* ── Back to top ── */
   const backTop = document.getElementById('backTop');
   window.addEventListener('scroll', () => {
     backTop.classList.toggle('show', window.scrollY > 400);
   }, { passive: true });
 
-  /* ── Active nav link highlight ── */
   const sections = document.querySelectorAll('section[id], .hero[id]');
   const navAs    = document.querySelectorAll('.nav-links a');
   const navObs   = new IntersectionObserver((entries) => {
@@ -988,7 +891,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => navObs.observe(s));
 
-  /* ── Generate floating data-particles in hero (subtle motion) ── */
   (function () {
     const field = document.getElementById('particleField');
     if (!field || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1013,3 +915,6 @@ footer p { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color
 
 </body>
 </html>
+```
+
+The downloadable `index.html` file from earlier in the conversation is identical to this — ready to upload directly to GitHub Pages.
